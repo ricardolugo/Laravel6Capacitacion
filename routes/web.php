@@ -26,3 +26,8 @@ Route::get('/hola/{nombre?}', function($nombre = "omar"){
 Route::get('/sobre-nosotros-en-la-web', function(){
     return "<h1>Toda la informacion sobre nosotros</h1>";
 })->name("nosotros");
+
+Route::get('/home/{nombre?}/{apellido?}', function($nombre = "Pepe", $apellido = "Lugo") {
+    //return view("home")->with("nombre", $nombre)->with("apellido", $apellido);
+    return view("home", ["nombre" => $nombre, "apellido" => $apellido]);
+})->name("home");
