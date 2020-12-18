@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+/*
 Route::get('/test', function(){
     return "Hola mundo";
 });
@@ -35,3 +35,6 @@ Route::get('/home/{nombre?}/{apellido?}', function($nombre = "Pepe", $apellido =
 
     return view("home", ["nombre" => $nombre, "apellido" => $apellido, "posts" => $posts, "posts2" => $posts2]);
 })->name("home");
+*/
+
+Route::get('post', 'PostController@index');
