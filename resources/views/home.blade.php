@@ -7,7 +7,16 @@
     <title>Mi primera vista</title>
 </head>
 <body>
-    <h1>Hola mundo Laravel -  {!!"Hola mundo $nombre $apellido <script>alert('Hola mundo')</script>"!!}</h1>
+    <h1>Hola mundo Laravel -  {!!"Hola mundo $nombre $apellido"!!}</h1>
+
+    <ul>
+        @forelse ($posts2 as $post)
+        <li>{{ $post }}</li>
+        @empty
+        <li>Vacio</li>    
+        
+        @endforelse
+    </ul>
 
 </body>
 </html>
