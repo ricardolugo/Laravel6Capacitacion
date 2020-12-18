@@ -10,8 +10,34 @@
     <h1>Hola mundo Laravel -  {!!"Hola mundo $nombre $apellido"!!}</h1>
 
     <ul>
-        @forelse ($posts2 as $post)
-        <li>{{ $post }}</li>
+
+
+        @isset($posts3)
+          Isset
+        @endisset
+
+        @empty($posts3)
+          Empty    
+        @endempty
+        @forelse ($posts as $post)
+
+        <?php //dd($loop) ?>
+
+        <li>
+            @if ($loop->first)
+            Primero:
+            
+            @elseif ($loop->last)
+            Ultimo:
+
+            @else 
+            Medio:
+            @endif
+            
+
+            {{ $post }}
+
+        </li>
         @empty
         <li>Vacio</li>    
         

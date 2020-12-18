@@ -31,7 +31,7 @@ Route::get('/home/{nombre?}/{apellido?}', function($nombre = "Pepe", $apellido =
     //return view("home")->with("nombre", $nombre)->with("apellido", $apellido);
 
     $posts = ['Post1', 'Post2', 'Post3', 'Post4'];
-    $posts2 = [];
+    $posts2 = null;
 
     return view("home", ["nombre" => $nombre, "apellido" => $apellido, "posts" => $posts, "posts2" => $posts2]);
 })->name("home");
