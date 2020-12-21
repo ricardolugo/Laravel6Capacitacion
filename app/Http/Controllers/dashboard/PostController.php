@@ -15,8 +15,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        echo "Hola";
+    {   
+        $posts = Post::orderBy('created_at', 'desc')->get();
+
+        return view("dashboard.post.index", ['posts'=> $posts]);
     }
 
     /**
