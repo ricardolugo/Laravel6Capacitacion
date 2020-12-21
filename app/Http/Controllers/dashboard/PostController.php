@@ -73,9 +73,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('dashboard.post.edit', ["post" => $post]);
     }
 
     /**
@@ -85,9 +85,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePostPost $request, Post $post)
     {
-        //
+        $post->update($request->validated());
+
+        //return back()->with('status', 'Post creado con exito!');
     }
 
     /**
