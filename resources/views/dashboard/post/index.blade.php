@@ -28,6 +28,11 @@
                     <td>
                         <a class="btn btn-primary" href="{{ route('post.show', $post->id) }}">Ver</a>
                         <a class="btn btn-warning" href="{{ route('post.edit', $post->id) }}">Editar</a>
+                        <form method="POST" action="{{ route('post.destroy', $post->id) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger" type="submit">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
