@@ -17,7 +17,6 @@ class PostController extends Controller
     public function index()
     {   
         $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-
         return view("dashboard.post.index", ['posts'=> $posts]);
     }
 
@@ -46,9 +45,8 @@ class PostController extends Controller
         //    //'url_clean' => 'required|min:5|max:500',
         //    'content' => 'required|min:5'
         //]);
-        echo "hola mundo: ".$request->title;
+        //echo "hola mundo: ".$request->title;
         
-
         Post::create($request->validated());
 
         return back()->with('status', 'Post creado con exito!');
