@@ -1,2 +1,2 @@
 <option value="no">No</option>
-<option value="yes">Si</option>
+<option {{ $val == 'yes' ? 'selected="selected"' : ''}} value="yes">Si</option>

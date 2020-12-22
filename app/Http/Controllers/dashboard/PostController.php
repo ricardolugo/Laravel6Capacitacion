@@ -27,8 +27,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view("dashboard.post.create", ['post' => new Post()]);
+    {   
+        $categories = Category::pluck('id', 'title');
+        return view("dashboard.post.create", ['post' => new Post(), 'categories' => $categories]);
     }
 
     /**
@@ -90,6 +91,18 @@ class PostController extends Controller
         $post-> update($request->validated());
 
         return back()->with('status', 'Post actualizado con exito!');
+    }
+
+    public function image(Request $request, Post $post)
+    {
+        $request->validate([
+            'image' => 'required|mimes:jpeg,bmp,png|max:10240'  //10mb
+        ]);
+        
+        $filename = time() . "." .$request->image->extension();
+
+        $request->image->move(public_path('images'), $filename);
+        echo 'hola mundo '. $filename;
     }
 
     /**
