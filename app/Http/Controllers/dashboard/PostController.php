@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Post;
 use App\Category;
+use App\PostImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
@@ -74,7 +75,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
-    {
+    {   
+        //dd($post->image->image);
         $categories = Category::pluck('id', 'title');
         return view('dashboard.post.edit', ["post" => $post, "categories" => $categories]);
     }
@@ -102,7 +104,9 @@ class PostController extends Controller
         $filename = time() . "." .$request->image->extension();
 
         $request->image->move(public_path('images'), $filename);
-        echo 'hola mundo '. $filename;
+        
+        PostImage::create(['image' => $filename, 'post_id' => $post->id]);
+        return back()->with('status', 'Imagen cargada con exito');
     }
 
     /**
