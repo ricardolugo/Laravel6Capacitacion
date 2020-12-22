@@ -2,15 +2,9 @@
 
 @section('content')
 
-
-        @csrf
         <div class="form-group">
             <label for="title">Titulo</label>
             <input readonly class="form-control" type="text" name="title" id="title" value="{{ $post->title }}">
-            
-            @error('title')
-                <small class="text-danger">{{$message}}</small>
-            @enderror
         </div>
         <div class="form-group">
             <label for="url_clean">Url limpia</label>
